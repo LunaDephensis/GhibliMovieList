@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'colors';
+@import 'mixins';
+@import 'media';
+@import 'loader';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    @include sections;
+    flex-direction: column;
+}
+
+.loaderBox {
+  @include loader;
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(1);
+    }
+    80%,100% {
+        transform: scale(0);
+    }
+}
+
+header {
+    @include header;
+    justify-content: flex-start;
+
+
+    @include tablet {
+        padding: 13px 75px;
+    }
+    @include tabletSmall {
+        height: 95.55px;
+    }
+    @include mobile {
+        padding: 13px 25px;
+    }
+
+    .logo {
+        text-decoration: none;
+        margin-right: 30px;
+
+        img {
+            max-width: 130px;
+            filter: invert(1);
+            @include tabletSmall {
+                max-width: 100px;
+            }
+        }
+    }
+
+    h2 {
+        font-size: 2em;
+        font-weight: 500;
+        color: $white;
+        @include tabletSmall {
+            font-size: 1.2em;
+        }
+    }
+}
+
+.mainContent {
+    @include mainContent;
+    min-height: calc(100vh - 95.55px);
+    @include tabletSmall {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    @include tabletXS {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+.posterBx {
+    position: relative;
+    width: 267px;
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-right: 20px;
+    @include tabletSmall {
+        width: 233px;
+        height: 350px;
+    }
+    @include tabletXS {
+        margin-right: 0;
+        margin-bottom: 20px;
+        width: 267px;
+        height: 400px;
+    }
+
+    .poster {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+.filmInfo {
+    position: relative;
+    width: calc(100% - 267px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 25px;
+    color: $black;
+    @include tabletSmall {
+        width: calc(100% - 233px);
+        padding: 0 0 0 20px;
+    }
+    @include tabletXS {
+        width: 100%;
+        padding: 0;
+        align-items: center;
+    }
+
+    .romaji {
+        margin-bottom: 15px;
+        color: $black;
+        font-weight: 400;
+        width: 100%;
+        border-bottom: 1px solid rgba(0,0,0,0.3);
+        @include tabletXS {
+            text-align: center;
+        }
+
+        span {
+            color: $black;
+            font-weight: 600;
+        }
+    }
+
+    .filmDatas {
+        position: relative;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        @include tabletXS {
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+
+        li {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.7em;
+            color: $blackrgba;
+            margin-right: 15px;
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            span {
+                font-size: 1.1em;
+                font-weight: 600;
+                margin-left: 5px;
+                color: $black;
+
+                span {
+                    font-size: 1em;
+                }
+            }
+        }
+    }
+}
+
+.descriptionBox {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+    @include tabletXS {
+        text-align: center;
+    }
+}
+
+.errorMessage {
+    @include errorMessage;
+}
+
+footer {
+    @include footer;
+}

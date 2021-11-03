@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import 'colors';
+@import 'mixins';
+@import 'media';
+@import 'loader';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+section {
+    @include sections;
+    flex-direction: column;
+}
+
+.loaderBox {
+    @include loader;
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(1);
+    }
+    80%,100% {
+        transform: scale(0);
+    }
+}
+
+header {
+    @include header;
+    justify-content: space-between;
+
+
+    .logo {
+        text-decoration: none;
+
+        img {
+            max-width: 130px;
+            filter: invert(1);
+            @include tabletSmall {
+                max-width: 100px;
+            }
+        }
+        @include tabletSmall {
+            margin-right: 25px;
+        }
+    }
+
+    .search {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            padding: 5px 15px;
+            font-size: 16px;
+            border-radius: 12px;
+            border: none;
+            outline: none;
+            color: $darkLazac2;
+            @include tabletSmall {
+                width: 100%;
+            }
+
+            &::placeholder {
+                color: $darkLazac2rgba;
+            }
+
+        }
+    }
+}
+
+.mainContent {
+    @include mainContent;
+    flex-direction: column;
+}
+
+.filterAndSort {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    flex-direction: column-reverse;
+    @include tabletSmall {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+    }
+}
+
+.filterBox {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    box-shadow: 0 3px 20px $cardShadow;
+    border-radius: 8px;
+    margin-bottom: 30px;
+
+    @include tabletSmall {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        max-width: 550px;
+        padding: 25px;
+    }
+    @include mobile {
+        max-width: 325px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .producerFilterBar {
+        position: relative;
+        width: 250px;
+        z-index: 100;
+        @include tablet {
+            width: 220px;
+        }
+        @include tabletSmall {
+            width: 100%;
+        }
+
+        .filterToggle {
+            @include toggles;
+            @include tablet {
+                padding: 0 10px;
+            }
+            @include tabletSmall {
+                padding: 0 20px;
+            }
+        }
+
+        ul {
+            position: absolute;
+            display: block;
+            top: 35px;
+            left: 0;
+            width: 100%;
+            max-height: 0;
+            background: $white;
+            @include tablet {
+                top: 30px;
+            }
+            @include tabletSmall {
+                top: 35px;
+            }
+
+            &.active {
+                max-height: 500px;
+                border-radius: 0 0 4px 4px;
+                @include greenBorder;
+                border-top: none;
+            }
+
+            li {
+                position: relative;
+                list-style: none;
+                text-decoration: none;
+                display: none;
+                padding: 0 20px;
+                height: 0;
+                width: 100%;
+                color: $greenRgba;
+                font-size: 16px;
+                font-weight: 500;
+                transition: 1s;
+                z-index: 110;
+                @include tablet {
+                    font-size: 0.8em;
+                }
+                @include tabletSmall {
+                    font-size: 1em;
+                }
+
+                &:hover {
+                    transition: 0s;
+                    color: $white;
+                    background: $greenRgba;
+                    cursor: pointer;
+                }
+            }
+
+            &.active li {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                height: 35px;
+                @include tablet {
+                    height: 30px;
+                }
+                @include tabletSmall {
+                    height: 35px;
+                }
+            }
+        }
+    }
+
+    .dateFilter {
+        @include filterBoxes;
+        @include tabletSmall {
+            margin-right: 10px;
+        }
+        @include mobile {
+            margin-right: 0;
+        }
+
+        input {
+            max-width: 80px;
+            @include tablet {
+                max-width: 60px;
+            }
+        }
+
+        label {
+            margin-right: 5px;
+        }
+        
+        input {
+            margin: 0 5px;
+        }
+    }
+
+    .percentFilter {
+        @include filterBoxes;
+
+        input {
+            max-width: 50px;
+            @include tablet {
+                max-width: 40px;
+            }
+        }
+        
+        label {
+            margin-right: 10px;
+        }
+        span {
+            font-size: 1.2em;
+            margin: 0 3px;
+
+            @include tablet {
+                font-size: 1em;
+            }
+            @include tabletSmall {
+                font-size: 1.2em;
+            }
+        }
+    }
+
+    .filterBtn {
+        position: relative;
+        font-size: 1em;
+        font-weight: 500;
+        color: $white;
+        padding: 7px 20px;
+        background: $greenRgba;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        outline: none;
+        margin-left: 5px;
+
+        &:hover {
+            background: $green;
+            cursor: pointer;
+        }
+        @include tabletSmall {
+            width: 100%;
+            margin-left: 0;
+        }
+    }
+}
+
+.sortBox {
+    position: relative;
+    width: 300px;
+    z-index: 100;
+    margin-bottom: 30px;
+    @include tabletSmall {
+        align-self: flex-end;
+    }
+    @include mobile {
+        width: 100%;
+        max-width: 325px;
+        align-self: center;
+    }
+
+    .sortToggle {
+        @include toggles;
+    }
+
+    ul {
+        position: absolute;
+        display: block;
+        top: 35px;
+        left: 0;
+        width: 100%;
+        max-height: 0;
+        background: $white;
+        /*transition: max-height 0.5s;*/
+        @include tablet {
+            top: 30px;
+        }
+        @include tabletSmall {
+            top: 35px;
+        }
+
+        &.active {
+            max-height: 500px;
+            border-radius: 0 0 4px 4px;
+            @include greenBorder;
+            border-top: none;
+        }
+
+        li {
+            position: relative;
+            list-style: none;
+            text-decoration: none;
+            display: none;
+            padding: 0 20px;
+            height: 0;
+            width: 100%;
+            color: $greenRgba;
+            font-size: 16px;
+            font-weight: 500;
+            transition: 1s;
+            z-index: 110;
+            @include tablet {
+                font-size: 0.8em;
+            }
+            @include tabletSmall {
+                font-size: 1em;
+            }
+
+            &:hover {
+                transition: 0s;
+                color: $white;
+                background: $greenRgba;
+                cursor: pointer;
+            }
+        }
+
+        &.active li {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            height: 35px;
+            @include tablet {
+                height: 30px;
+            }
+            @include tabletSmall {
+                height: 35px;
+            }
+        }
+    }
+}
+
+.errorMessage {
+    @include errorMessage;
+}
+
+.films {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 360px);
+    justify-content: space-between;
+    grid-gap: gap;
+    @include tabletSmall {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .filmCard {
+        position: relative;
+        width: 360px;
+        height: 280px;
+        border-radius: 6px;
+        background: $white;
+        box-shadow: 0 7px 25px $cardShadow;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        overflow: hidden;
+        margin: 30px 0;
+
+        .cardHeader {
+            position: relative;
+            width: 100%;
+            padding: 6px 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            background: $green;
+            color: $white;
+
+            h2 {
+                font-size: 1.1em;
+                font-weight: 600;
+                line-height: 1.6em;
+            }
+
+            h4 {
+                font-size: 0.9em;
+                line-height: 1.3em;
+                font-weight: 400;
+                color: $whiteRgba;
+                font-style: italic;
+            }
+        }
+
+        .cardContent {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .imgBx {
+                position: relative;
+                height: 182px;
+                width: 121px;
+                border-radius: 3px;
+                overflow: hidden;
+    
+                .poster {
+                    position: relative;
+                    width: 100%;
+                }
+            }
+
+            .textBx {
+                position: relative;
+                width: 60%;
+                height: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                flex-direction: column;
+
+                li {
+                    position: relative;
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    font-size: 12px;
+                    color: $blackrgba;
+                    padding: 4px 0;
+                    margin-left: 5px;
+
+                    img {
+                        position: relative;
+                        max-width: 25px;
+                    }
+
+                    span {
+                        font-size: 1.1em;
+                        font-weight: 500;
+                        margin-left: 5px;
+                        color: $black;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        font-size: 1.2em;
+                        font-weight: 500;
+                        color: $white;
+                        padding: 7px 10px;
+                        margin-top: 15px;
+                        background: $darkLazac2;
+                        border-radius: 4px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        &:hover {
+                            background: $darkLazac;
+                        }
+
+                        ion-icon {
+                            font-size: 1.4em;
+                            margin-left: 4px;
+                        }
+                    }
+                }
+
+                .japan span {
+                    font-size: 0.9em;
+                }
+
+            }
+        }
+
+    }
+}
+
+footer {
+    @include footer;
+}

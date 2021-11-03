@@ -1,0 +1,315 @@
+@mixin sections {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 13px 100px;
+    background: $black;
+    display: flex;
+    align-items: center;
+    z-index: 1000;
+
+    @include tablet {
+        padding: 13px 75px;
+    }
+    @include tabletSmall {
+        height: 95.55px;
+    }
+    @include mobile {
+        padding: 13px 25px;
+    }
+}
+
+@mixin mainContent {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    margin-top: 110px;
+    padding: 15px 100px 30px 100px;
+    background: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+        padding: 15px 75px 30px 75px;
+    }
+    @include mobile {
+        padding: 15px 25px 30px 25px;
+    }
+}
+
+@mixin greenBorder {
+    border: 2px solid $greenRgba;
+}
+
+@mixin filterBoxes {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $greenRgba;
+    @include tabletSmall {
+        margin-bottom: 15px;
+    }
+
+    label, span {
+        font-weight: 500;
+        text-align: center;
+
+        @include tablet {
+            font-size: 0.8em;
+        }
+        @include tabletSmall {
+            font-size: 1em;
+        }
+    }
+
+    input {
+        @include greenBorder;
+        border-radius: 4px;
+        font-size: 16px;
+        font-weight: 500;
+        padding: 2px 4px;
+        color: $greenRgba;
+        -moz-appearance: textfield;
+        outline: none;
+        background: $white;
+        text-align: end;
+
+        &:focus {
+            background: rgba(0,0,0,0.02);
+        }
+
+        @include tablet {
+            font-size: 0.8em;
+        }
+        @include tabletSmall {
+            font-size: 1em;
+        }
+    }
+
+    input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+}
+
+@mixin toggles {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    background: $white;
+    color: $greenRgba;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 4px;
+    @include greenBorder;
+    @include tablet {
+        font-size: 0.8em;
+        height: 30px;
+    }
+    @include tabletSmall {
+        font-size: 1em;
+        height: 35px;
+        margin-bottom: 15px;
+    }
+
+    &.active {
+        border-radius: 4px 4px 0 0;
+        border-bottom: none;
+    }
+
+    ion-icon {
+        font-size: 1.2em;
+        margin-left: 7px;
+        transition: 0.5s;
+    }
+
+    &.active ion-icon {
+        transform: rotate(180deg);
+    }
+}
+
+@mixin errorMessage {
+    display: none;
+
+    &.active {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include tabletSmall {
+            flex-direction: column;
+        }
+    }
+
+    ion-icon {
+        font-size: 3em;
+        color: rgba(0,0,0,0.3);
+        margin-right: 40px;
+        @include tabletSmall {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            margin-right: 0;
+        }
+    }
+
+    h2 {
+        font-size: 2.5em;
+        font-weight: 400;
+        color: rgba(0,0,0,0.3);
+        @include tabletSmall {
+            font-size: 1.6em;
+            text-align: center;
+        }
+        @include mobile {
+            font-size: 1.2em;
+        }
+    }
+}
+
+@mixin footer {
+    position: relative;
+    width: 100%;
+    padding: 20px 100px;
+    background: $black;
+    color: $white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include tablet {
+        padding: 25px 75px 25px 75px;
+    }
+
+    @include tabletXS {
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    @include mobile {
+        padding: 25px;
+    }
+
+    ul {
+        font-size: 0.7em;
+
+        li {
+            list-style: none;
+
+            a {
+                text-decoration: none;
+            }
+        }
+    }
+
+    .sci {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        @include tabletXS {
+            order: 2;
+            padding: 0 15px 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+        }
+
+        li:nth-child(1) {
+            margin-right: 15px;
+        }
+
+        li ion-icon {
+            font-size: 2.8em;
+            color: $white;
+
+            &:hover {
+                color: $green;
+            }
+        }
+    }
+
+    .me {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        @include tabletXS {
+            order: 1;
+            margin-bottom: 15px;
+        }
+
+        li:nth-child(1) {
+            font-size: 1.2em;
+
+            span {
+                font-weight: 600;
+                margin: 0 5px;
+            }
+        }
+    }
+
+    .attributes {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        flex-direction: column;
+
+        @include tabletXS {
+            align-items: center;
+            order: 3;
+        }
+
+        li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            a {
+                color: $white;
+
+                &:hover {
+                    color: $green;
+                }
+            }
+
+            ion-icon {
+                font-size: 18px;
+                color: $white;
+                margin: 0 3px 0 8px;
+
+                &:hover {
+                    color: $green;
+                }
+            }
+
+            img {
+                filter: invert(1);
+
+                &:hover {
+                    filter: invert(55%) sepia(25%) saturate(796%) hue-rotate(90deg) brightness(95%) contrast(89%);
+                }
+            }
+        }
+    }
+}
