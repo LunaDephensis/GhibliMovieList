@@ -1,26 +1,21 @@
-let producerFilterBar = document.querySelector('.producerFilterBar ul');
 import {nameShortering} from './util.js';
 
+let producerFilterBar = document.querySelector('.producerFilterBar ul');
 let sortBox = document.querySelector('.sortBox ul');
 let sortListElements = document.querySelectorAll('.sortBox ul li');
 let filterToggle = document.querySelector('.filterToggle');
 let sortToggle = document.querySelector('.sortToggle');
 let boxOfFilms = document.querySelector('.films');
-let allFilms = [];
-let filtereltFilmek = [];
-let oldestToNewest = document.querySelector('.oldestToNewest');
-let newestToOldest = document.querySelector('.newestToOldest');
-let bestToWorst = document.querySelector('.bestToWorst');
-let WorstToBest = document.querySelector('.WorstToBest');
-let aToZ = document.querySelector('.aToZ');
-let zToA = document.querySelector('.zToA');
 let filterBtn = document.querySelector('.filterBtn');
-let sortData = {};
 let search = document.querySelector('.searchInput');
 let percentInput = document.querySelector('.percentInput');
 let minInput = document.querySelector('.minInput');
 let maxInput = document.querySelector('.maxInput');
 let loaderBox = document.querySelector('.loaderBox');
+
+let allFilms = [];
+let filtereltFilmek = [];
+let sortData = {};
 
 loaderBox.classList.add('active');
 
