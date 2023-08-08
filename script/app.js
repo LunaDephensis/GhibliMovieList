@@ -19,7 +19,7 @@ let sortData = {};
 
 loaderBox.classList.add('active');
 
-fetch('https://ghibliapi.herokuapp.com/films').then((valasz) =>{
+fetch('https://ghibliapi.vercel.app/films').then((valasz) =>{
     return valasz.json();
 }).then((filmek) => {
     allFilms = filmek;

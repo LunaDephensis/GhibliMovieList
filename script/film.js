@@ -10,7 +10,7 @@ let loaderBox = document.querySelector('.loaderBox');
 
 loaderBox.classList.add('active');
 
-fetch(`https://ghibliapi.herokuapp.com/films/${filmId}`).then((valasz) => {
+fetch(`https://ghibliapi.vercel.app/films/${filmId}`).then((valasz) => {
     return valasz.json();
 }).then((film) => {
     let director = nameShortering(film.director);
